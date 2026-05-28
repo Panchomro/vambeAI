@@ -66,6 +66,7 @@ export default function ClientsPage() {
               data={data}
               page={filters.page ?? 1}
               onPageChange={(p) => setFilters((f) => ({ ...f, page: p }))}
+              onLimitChange={(limit) => setFilters((f) => ({ ...f, limit, page: 1 }))}
               onSelectClient={handleSelectClient}
             />
           ) : null}

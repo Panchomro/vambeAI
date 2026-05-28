@@ -70,14 +70,16 @@ export default function ClientFilters({ filters, vendors, onChange, onReset }: P
     onChange({ ...filters, [key]: value === "" ? undefined : value, page: 1 });
   };
 
+  const selectCls = "w-full text-sm border border-slate-200 dark:border-slate-600 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-500/30 bg-white dark:bg-slate-700 dark:text-slate-200";
+
   return (
     <div className="card space-y-4">
       <div className="flex items-center justify-between">
-        <div className="flex items-center gap-2 text-sm font-semibold text-slate-700">
+        <div className="flex items-center gap-2 text-sm font-semibold text-slate-700 dark:text-slate-200">
           <SlidersHorizontal className="w-4 h-4" />
           Filtros
         </div>
-        <button onClick={onReset} className="text-xs text-slate-400 hover:text-slate-600 flex items-center gap-1">
+        <button onClick={onReset} className="text-xs text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 flex items-center gap-1">
           <X className="w-3 h-3" /> Limpiar
         </button>
       </div>
@@ -89,7 +91,7 @@ export default function ClientFilters({ filters, vendors, onChange, onReset }: P
           placeholder="Nombre, correo, vendedor..."
           value={filters.search ?? ""}
           onChange={(e) => update("search", e.target.value)}
-          className="w-full pl-9 pr-3 py-2 text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500/30"
+          className="w-full pl-9 pr-3 py-2 text-sm border border-slate-200 dark:border-slate-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500/30 bg-white dark:bg-slate-700 dark:text-slate-200 dark:placeholder-slate-500"
         />
       </div>
 
@@ -105,11 +107,11 @@ export default function ClientFilters({ filters, vendors, onChange, onReset }: P
         ] as [string, keyof ClientFilters, { value: string; label: string }[]][]
       ).map(([label, key, options]) => (
         <div key={key}>
-          <label className="text-xs text-slate-500 block mb-1">{label}</label>
+          <label className="text-xs text-slate-500 dark:text-slate-400 block mb-1">{label}</label>
           <select
             value={String(filters[key] ?? "")}
             onChange={(e) => update(key, e.target.value === "" ? undefined : key === "closed" ? Number(e.target.value) : e.target.value)}
-            className="w-full text-sm border border-slate-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-500/30 bg-white"
+            className={selectCls}
           >
             {options.map((o) => (
               <option key={o.value} value={o.value}>
@@ -121,11 +123,11 @@ export default function ClientFilters({ filters, vendors, onChange, onReset }: P
       ))}
 
       <div>
-        <label className="text-xs text-slate-500 block mb-1">Vendedor</label>
+        <label className="text-xs text-slate-500 dark:text-slate-400 block mb-1">Vendedor</label>
         <select
           value={filters.vendedor ?? ""}
           onChange={(e) => update("vendedor", e.target.value)}
-          className="w-full text-sm border border-slate-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-500/30 bg-white"
+          className={selectCls}
         >
           <option value="">Todos</option>
           {vendors.map((v) => (
