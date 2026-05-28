@@ -8,7 +8,9 @@ import type {
   TimelinePoint,
 } from "./types";
 
-const BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+const _raw = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+// Asegura que tenga protocolo para que new URL() no falle
+const BASE = _raw.startsWith("http") ? _raw : `https://${_raw}`;
 
 async function get<T>(path: string, params?: Record<string, string | number | boolean | undefined>): Promise<T> {
   const url = new URL(`${BASE}${path}`);
