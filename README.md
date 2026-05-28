@@ -75,6 +75,8 @@ python -m pipeline.categorize
 # continúa desde donde se quedó (salta registros ya categorizados).
 ```
 
+> **Nota sobre el dataset demo:** El `vambeai.db` incluido en el repositorio tiene **170 de los 10.000 clientes categorizados**. El límite del plan gratuito de Groq es de 100.000 tokens por día, lo que alcanzó para procesar ~160 transcripciones por ejecución. El pipeline es resumable: al correrlo un día siguiente continúa desde el registro 171. Para el propósito de este demo, 170 registros categorizados son suficientes para mostrar distribuciones reales en todos los gráficos y filtros del dashboard.
+
 ### 4. Frontend
 
 ```bash
