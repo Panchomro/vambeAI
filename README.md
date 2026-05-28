@@ -2,6 +2,8 @@
 
 Aplicación que procesa transcripciones de reuniones de ventas, categoriza clientes automáticamente con LLM (Groq / Llama 3.3 70B) y visualiza métricas en un panel interactivo.
 
+**Demo en vivo:** https://vambe-ai.vercel.app/
+
 ## Stack
 
 | Capa | Tecnología |
@@ -23,9 +25,9 @@ Aplicación que procesa transcripciones de reuniones de ventas, categoriza clien
 ### 1. Clonar y preparar datos
 
 ```bash
-git clone <repo-url>
-cd vambeai
-# Asegúrate de que vambe_clients_10k.csv está en la raíz del proyecto
+git clone https://github.com/Panchomro/vambeAI.git
+cd vambeAI
+# Descarga vambe_clients_10k.csv y colócalo en la raíz del proyecto
 ```
 
 ### 2. Backend
@@ -38,11 +40,15 @@ python -m venv venv
 .\venv\Scripts\activate        # Windows
 # source venv/bin/activate     # Mac/Linux
 
-# Instalar dependencias
+# Instalar dependencias de la API
 pip install -r requirements.txt
 
 # Configurar variables de entorno
-# Edita .env con tu API key de Groq (ya incluida si clonaste el repo)
+cp .env.example .env
+# Edita .env y agrega tu API key de Groq
+
+# Instalar dependencias del pipeline (solo para ingest/categorize)
+pip install -r requirements-pipeline.txt
 
 # Cargar CSV en la base de datos
 python -m pipeline.ingest
