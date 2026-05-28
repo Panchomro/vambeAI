@@ -16,9 +16,10 @@ dist/
 build/
 .pytest_cache/
 
-# Database
+# Database (se excluye en general pero se trackea el db de demo pre-populado)
 *.db
 *.sqlite
+!backend/vambeai.db
 
 # Node
 node_modules/

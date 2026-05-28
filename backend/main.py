@@ -8,10 +8,15 @@ Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="VambeAI Dashboard API", version="1.0.0")
 
+import os
+
+_origins_env = os.getenv("ALLOWED_ORIGINS", "")
+allow_origins = _origins_env.split(",") if _origins_env else ["*"]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000", "http://127.0.0.1:3000"],
-    allow_credentials=True,
+    allow_origins=allow_origins,
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
