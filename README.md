@@ -3,6 +3,7 @@
 Aplicación que procesa transcripciones de reuniones de ventas, categoriza clientes automáticamente con LLM (Groq / Llama 3.3 70B) y visualiza métricas en un panel interactivo.
 
 **Demo en vivo:** https://vambe-ai.vercel.app/
+**Repositorio:** https://github.com/Panchomro/vambeAI
 
 ## Stack
 
@@ -14,11 +15,19 @@ Aplicación que procesa transcripciones de reuniones de ventas, categoriza clien
 | Frontend | Next.js 14 (App Router) + TypeScript + Tailwind CSS |
 | Gráficos | Recharts |
 
+## Funcionalidades del dashboard
+
+- **7 gráficos interactivos** — sentimiento, objeciones, industrias, embudo de etapas, timeline, rendimiento por vendedor, urgencia & ajuste de producto
+- **6 KPI cards** — tasa de cierre global, cierre por sentimiento positivo, alta urgencia, objeción principal, progreso del pipeline
+- **Tabla de clientes** con búsqueda por texto, 9 filtros combinables (todas las dimensiones LLM), selector de filas por página (10/20/50/100) y scroll interno
+- **Modo oscuro** con toggle en la navbar, persistido en localStorage
+- **Modal de detalle** por cliente con transcripción completa y todas las categorías
+
 ## Requisitos previos
 
 - Python 3.11+
 - Node.js 18+
-- API key de Groq (gratis en console.groq.com)
+- API key de Groq (gratis en [console.groq.com](https://console.groq.com))
 
 ## Ejecución local
 
@@ -65,17 +74,17 @@ Documentación interactiva: http://localhost:8000/docs
 ```bash
 # Desde el directorio backend, con el venv activado:
 
-# Procesar primeros 200 registros (rápido, ~7 min)
+# Procesar primeros 200 registros (~7 min)
 python -m pipeline.categorize --limit 200
 
-# Procesar todos los 10K registros (requiere ~6-7 horas, resumable)
+# Procesar todos los 10K registros (~6-7 horas, resumable)
 python -m pipeline.categorize
 
 # El pipeline es resumable: si lo interrumpes, al volver a correrlo
 # continúa desde donde se quedó (salta registros ya categorizados).
 ```
 
-> **Nota sobre el dataset demo:** El `vambeai.db` incluido en el repositorio tiene **170 de los 10.000 clientes categorizados**. El límite del plan gratuito de Groq es de 100.000 tokens por día, lo que alcanzó para procesar ~160 transcripciones por ejecución. El pipeline es resumable: al correrlo un día siguiente continúa desde el registro 171. Para el propósito de este demo, 170 registros categorizados son suficientes para mostrar distribuciones reales en todos los gráficos y filtros del dashboard.
+> **Nota sobre el dataset demo:** El `vambeai.db` incluido en el repositorio tiene **170 de los 10.000 clientes categorizados**. El plan gratuito de Groq tiene un límite de 100.000 tokens por día, lo que alcanzó para procesar ~160 transcripciones por ejecución. El pipeline es resumable: al correrlo al día siguiente continúa desde el registro 171. Para el propósito de este demo, 170 registros son suficientes para mostrar distribuciones reales en todos los gráficos y filtros.
 
 ### 4. Frontend
 
@@ -109,14 +118,17 @@ Ver [ARCHITECTURE.md](./ARCHITECTURE.md).
 ## Endpoints principales
 
 ```
-GET /api/clients              Listado paginado con filtros
-GET /api/clients/{id}         Detalle de cliente con transcripción
-GET /api/metrics/overview     KPIs generales
-GET /api/metrics/by-sentiment Distribución por sentimiento
-GET /api/metrics/by-objection Objeciones y tasas de cierre
-GET /api/metrics/by-industry  Distribución por industria
-GET /api/metrics/by-stage     Embudo de etapas
+GET /api/clients                Listado paginado con filtros
+GET /api/clients/{id}           Detalle de cliente con transcripción
+GET /api/metrics/overview       KPIs generales
+GET /api/metrics/by-sentiment   Distribución por sentimiento
+GET /api/metrics/by-objection   Objeciones y tasas de cierre
+GET /api/metrics/by-industry    Distribución por industria
+GET /api/metrics/by-stage       Embudo de etapas
 GET /api/metrics/by-salesperson Rendimiento por vendedor
-GET /api/metrics/timeline     Serie temporal de reuniones
-GET /api/metrics/status       Progreso del pipeline LLM
+GET /api/metrics/by-urgency     Distribución por urgencia
+GET /api/metrics/by-product-fit Distribución por ajuste de producto
+GET /api/metrics/timeline       Serie temporal de reuniones
+GET /api/metrics/status         Progreso del pipeline LLM
+GET /api/metrics/vendors        Lista de vendedores únicos
 ```

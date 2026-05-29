@@ -1,6 +1,6 @@
 "use client";
 
-import { ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
+import { ChevronLeft, ChevronRight, Eye } from "lucide-react";
 import type { Client, PaginatedClients } from "@/lib/types";
 import { SentimentBadge, UrgencyBadge, StatusBadge, IndustryBadge } from "./badges";
 
@@ -107,10 +107,10 @@ export default function ClientTable({ data, page, onPageChange, onLimitChange, o
                 <td className="px-4 py-3">
                   <button
                     onClick={() => onSelectClient(c)}
-                    className="opacity-0 group-hover:opacity-100 transition-opacity p-1.5 hover:bg-slate-200 dark:hover:bg-slate-600 rounded-lg"
-                    title="Ver detalle"
+                    className="opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1 px-2 py-1 text-xs font-medium rounded-lg text-brand-600 dark:text-brand-400 hover:bg-brand-50 dark:hover:bg-brand-700/20"
                   >
-                    <ExternalLink className="w-4 h-4 text-slate-500 dark:text-slate-400" />
+                    <Eye className="w-3.5 h-3.5" />
+                    Ver
                   </button>
                 </td>
               </tr>
