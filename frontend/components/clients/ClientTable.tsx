@@ -107,10 +107,10 @@ export default function ClientTable({ data, page, onPageChange, onLimitChange, o
                 <td className="px-4 py-3">
                   <button
                     onClick={() => onSelectClient(c)}
-                    className="opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1 px-2 py-1 text-xs font-medium rounded-lg text-brand-600 dark:text-brand-400 hover:bg-brand-50 dark:hover:bg-brand-700/20"
+                    className="flex items-center gap-1 px-2 py-1 text-xs font-medium rounded-lg text-brand-600 dark:text-brand-400 hover:bg-brand-50 dark:hover:bg-brand-700/20 transition-colors whitespace-nowrap"
                   >
                     <Eye className="w-3.5 h-3.5" />
-                    Ver
+                    Ver Detalle
                   </button>
                 </td>
               </tr>
