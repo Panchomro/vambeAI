@@ -22,8 +22,8 @@ export default function StageChart({ data }: { data: MetricCount[] }) {
 
   return (
     <div className="card">
-      <h3 className="font-semibold text-slate-800 mb-1">Embudo de etapas</h3>
-      <p className="text-xs text-slate-400 mb-4">Clientes por etapa del proceso de venta</p>
+      <h3 className="font-semibold text-slate-800 dark:text-white mb-1">Embudo de etapas</h3>
+      <p className="text-xs text-slate-400 dark:text-slate-500 mb-4">Clientes por etapa del proceso de venta</p>
       <ResponsiveContainer width="100%" height={240}>
         <BarChart data={formatted} margin={{ top: 5, right: 20, left: 0, bottom: 30 }}>
           <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" />

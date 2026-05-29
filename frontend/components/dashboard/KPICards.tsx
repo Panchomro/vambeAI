@@ -81,9 +81,9 @@ export default function KPICards({ metrics, status }: Props) {
               <Icon className="w-5 h-5" />
             </div>
             <div>
-              <p className="text-2xl font-bold text-slate-900">{c.value}</p>
-              <p className="text-xs text-slate-500 mt-1">{c.title}</p>
-              <p className="text-xs text-slate-400">{c.sub}</p>
+              <p className="text-2xl font-bold text-slate-900 dark:text-white">{c.value}</p>
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">{c.title}</p>
+              <p className="text-xs text-slate-400 dark:text-slate-500">{c.sub}</p>
             </div>
           </div>
         );

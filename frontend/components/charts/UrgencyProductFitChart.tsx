@@ -20,8 +20,8 @@ export default function UrgencyProductFitChart({
 
   return (
     <div className="card">
-      <h3 className="font-semibold text-slate-800 mb-1">Urgencia & ajuste de producto</h3>
-      <p className="text-xs text-slate-400 mb-4">Tasa de cierre por combinación de dimensiones</p>
+      <h3 className="font-semibold text-slate-800 dark:text-white mb-1">Urgencia & ajuste de producto</h3>
+      <p className="text-xs text-slate-400 dark:text-slate-500 mb-4">Tasa de cierre por combinación de dimensiones</p>
       <ResponsiveContainer width="100%" height={260}>
         <RadarChart data={radarData}>
           <PolarGrid />

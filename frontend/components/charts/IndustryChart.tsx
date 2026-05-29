@@ -25,8 +25,8 @@ export default function IndustryChart({ data }: { data: MetricCount[] }) {
 
   return (
     <div className="card">
-      <h3 className="font-semibold text-slate-800 mb-1">Industrias</h3>
-      <p className="text-xs text-slate-400 mb-4">Distribución por sector y tasa de cierre</p>
+      <h3 className="font-semibold text-slate-800 dark:text-white mb-1">Industrias</h3>
+      <p className="text-xs text-slate-400 dark:text-slate-500 mb-4">Distribución por sector y tasa de cierre</p>
       <ResponsiveContainer width="100%" height={260}>
         <BarChart data={formatted} layout="vertical" margin={{ top: 5, right: 60, left: 70, bottom: 5 }}>
           <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" horizontal={false} />

@@ -28,8 +28,8 @@ export default async function DashboardPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold text-slate-900">Dashboard</h1>
-        <p className="text-slate-500 text-sm mt-1">
+        <h1 className="text-2xl font-bold text-slate-900 dark:text-white">Dashboard</h1>
+        <p className="text-slate-500 dark:text-slate-400 text-sm mt-1">
           Métricas de ventas enriquecidas con IA · {status.categorized.toLocaleString()} de{" "}
           {status.total.toLocaleString()} clientes categorizados ({status.progress_pct}%)
         </p>

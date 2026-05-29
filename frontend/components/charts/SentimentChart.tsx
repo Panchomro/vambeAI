@@ -25,7 +25,7 @@ export default function SentimentChart({ data }: { data: MetricCount[] }) {
 
   return (
     <div className="card">
-      <h3 className="font-semibold text-slate-800 mb-4">Sentimiento del cliente</h3>
+      <h3 className="font-semibold text-slate-800 dark:text-white mb-4">Sentimiento del cliente</h3>
       <ResponsiveContainer width="100%" height={240}>
         <PieChart>
           <Pie data={formatted} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={85} label={({ name, value }) => `${name}: ${value}`} labelLine={false}>
